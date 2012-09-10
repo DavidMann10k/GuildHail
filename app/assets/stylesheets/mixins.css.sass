@@ -1,0 +1,58 @@
+@mixin round($radius: 5px)
+  -moz-border-radius:    $radius
+  -webkit-border-radius: $radius
+  border-radius:         $radius
+  
+@mixin cool_link
+  background: $link_alt
+  padding: 7px
+  margin: 5px
+  @include round
+  &:hover
+    background: $link
+    color: $link_alt
+    
+@mixin hot_link
+  color: $red_2
+  background: $gre_2
+  border: 1px solid $gre_2
+  padding: 0px
+  padding-left: 15px
+  padding-right: 15px
+  margin: 2px
+  font-size: 1.5em
+  font-family: 'Contrail One', serif
+  @include round(20px)
+  &:hover
+    color: $gre_2
+    background: $red_2
+    
+@mixin item_link
+  @include round(10px)
+  display: block
+  font-size: 1.5em
+  padding: 5px
+  &:hover
+    background: $link
+    color: $link_alt
+    
+@mixin button
+  background: $gre_1
+  border: 1px solid black
+  padding-left: 7px
+  padding-right: 7px
+  @include round(20px)
+  &:hover
+    background: $link
+    color: $link_alt
+    
+@mixin title_link
+  color: $title
+  &:link
+    color: $title
+  &:visited
+    color: $title
+  &:hover
+    color: $gre_3
+  &:active
+    color: $gre_3

@@ -28,6 +28,7 @@ gem 'jquery-rails'
 
 group :development do
   gem 'nifty-generators'
+  gem 'sqlite3'
 end
 
 group :production do

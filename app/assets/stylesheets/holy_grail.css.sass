@@ -1,0 +1,79 @@
+$left_col_wid: 200px
+$right_col_wid: 200px
+$center_min_wid: 600px
+$col_padding: 15px
+
+$left_col_color: $gre_6
+$right_col_color: $gre_6
+$center_col_color: white
+
+$min_wid: $left_col_wid + $right_col_wid + $center_min_wid
+
+body
+  margin: 0
+  padding: 0
+  border: 0                               /* This removes the border around the viewport in old versions of IE */
+  width: 100%
+  background: #fff
+  min-width: $min_wid                    /* Minimum width of layout - remove line if not required /* The min-width property does not work in old versions of Internet Explorer */
+
+.colmask
+  position: relative                      /* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+  clear: both
+  float: left
+  width: 100%                             /* width of whole page */
+  overflow: hidden                        /* This chops off any overhanging divs */
+
+.holy_grail
+  background: $right_col_color
+
+  .colmid
+    float: left
+    width: 200%
+    margin-left: -$right_col_wid //-12em    /* Width of right column */
+    position: relative
+    right: 100%
+    background: $center_col_color           /* Centre column background colour */
+  
+  .colleft
+    float: left
+    width: 100%
+    margin-left: -50%
+    position: relative
+    left: $left_col_wid + $right_col_wid    //24em /* Left column width + right column width */
+    background: $left_col_color             /* Left column background colour */
+  
+  .col1wrap
+    float: left
+    width: 50%
+    position: relative
+    right: $left_col_wid                    //12em /* Width of left column */
+    padding-bottom: 1em                     /* Centre column bottom padding. Leave it out if it's zero */
+  
+  
+  .col1
+    margin: 0 ($right_col_wid + $col_padding) 0 ($left_col_wid + $col_padding) //0 13em  /* Centre column side padding: Left padding = left column width + centre column left padding width Right padding = right column width + centre column right padding width */
+    position: relative
+    left: 200%
+    overflow: hidden
+    padding-top: 15px
+    padding-bottom: 15px
+  
+  .col2
+    float: left
+    float: right                            /* This overrides the float: left above */
+    width: $left_col_wid - 2*$col_padding   // 10em /* Width of left column content (left column width minus left and right padding) */
+    position: relative
+    right: $col_padding                     /* Width of the left-had side padding on the left column */
+    padding-top: 15px
+    padding-bottom: 15px
+  
+  .col3
+    float: left
+    float: right                            /* This overrides the float: left above */
+    width: $right_col_wid - 2*$col_padding  // 10em /* Width of right column content (right column width minus left and right padding) */
+    margin-right: 3*$col_padding            // 3em /* Width of right column right-hand padding + left column left and right padding */
+    position: relative
+    left: 50%
+    padding-top: 15px
+    padding-bottom: 15px

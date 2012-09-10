@@ -1,0 +1,20 @@
+@import "mixins"
+
+nav
+  float: right
+  a
+    @include cool_link
+
+header
+  background-color: $gre_4
+  clear: both
+  float: left
+  width: 100%
+  border-bottom: 1px solid #000
+  a
+    float: right
+    margin: 5px
+  h1 a
+    margin: 5px
+    float: left
+    @include title_link

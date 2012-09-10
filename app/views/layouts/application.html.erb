@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>GuildHail</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title><%= title %></title>
+    <%= render 'layouts/stylesheets' %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+  	<header>
+  		<%= render 'layouts/header'%>
+  	</header>
+	  <% flash.each do |name, msg| %>
+	    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	  <% end %>
+  	<div class="colmask holy_grail">
+	    <div class="colmid">
+	        <div class="colleft">
+	            <div class="col1wrap">
+	                <div class="col1">
+						<!-- Column 1 start -->
+      						<%= yield %>						
+						<!-- Column 1 end -->
+	                </div>
+	            </div>
+	            <div class="col2">
+					<!-- Column 2 start -->
+					<%= link_to "Boxes", boxes_path, :class => "cool_link" %> 
+					<%= link_to "+Box", new_box_path, :class => "cool_link" %>
+	                <!-- Column 2 end -->
+	            </div>
+	            <div class="col3">
+					<!-- Column 3 start -->
+					THING
+					<!-- Column 3 end -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<%= render 'layouts/footer'%>
+	</footer>
+  </body>
 </html>
