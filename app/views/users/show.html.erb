@@ -1,9 +1,10 @@
-<h1><%= @user.name %></h1>
+<h1><%= @user.name %></h1><%= link_to "Edit Profile", edit_user_registration_path if @user == current_user %>
 <h2>Memeber Since</h2>
-<%= @user.created_at %>
+<%= "#{@user.created_at.strftime('%B %d, %Y')}" %>
 <% unless @user.alliances.empty? %>
-<h2>Member Of</h2>
+	<h2>Member Of</h2>
 	<% @user.alliances.each do |a| %>
-		<%= a.name %> since <%= l a.membership.created_at, :format => :short %>
+		<%= a.name %> since <%= a.membership.created_at.strftime('%B %d, %Y') %>
+		
 	<% end %>
 <% end %>

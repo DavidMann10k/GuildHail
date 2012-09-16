@@ -4,7 +4,15 @@ class ApplicationController < ActionController::Base
   before_filter :set_timezone
   
   def set_timezone
-    Time.zone = current_user.time_zone if user_signed_in?
-    Time.zone ||= "Central Time (US & Canada)"
+    Time.zone = time_zone
+    
+  end
+  
+  def time_zone
+    if (signed_in?)
+      current_user.time_zone
+    else
+      ActiveSupport::TimeZone.new("Central Time (US and Canada)")
+    end
   end
 end
