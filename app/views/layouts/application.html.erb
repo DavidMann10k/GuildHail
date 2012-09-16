@@ -7,16 +7,16 @@
   </head>
   <body>
   	<header>
-  		<%= render 'layouts/header'%>
+  		<%= render 'layouts/header' %>
   	</header>
-	  <% flash.each do |name, msg| %>
-	    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	  <% end %>
   	<div class="colmask holy_grail">
 	    <div class="colmid">
 	        <div class="colleft">
 	            <div class="col1wrap">
 	                <div class="col1">
+					  <% flash.each do |name, msg| %>
+					    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+					  <% end %>
 						<!-- Column 1 start -->
       						<%= yield %>						
 						<!-- Column 1 end -->
@@ -24,7 +24,7 @@
 	            </div>
 	            <div class="col2">
 					<!-- Column 2 start -->
-					
+					<%= render 'layouts/left_column' %>
 	                <!-- Column 2 end -->
 	            </div>
 	            <div class="col3">

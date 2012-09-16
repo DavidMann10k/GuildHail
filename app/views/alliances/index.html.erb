@@ -1,0 +1,17 @@
+<% title "Alliances" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for alliance in @alliances %>
+    <tr>
+      <td><%= link_to "#{alliance.name}", alliance_path(alliance) %></td>
+      <td><%= link_to "Show", alliance %></td>
+      <td><%= link_to "Edit", edit_alliance_path(alliance) %></td>
+      <td><%= link_to "Destroy", alliance, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Alliance", new_alliance_path %></p>

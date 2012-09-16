@@ -1,6 +1,10 @@
 GuildHail::Application.routes.draw do
   
+  resources :alliances
+
   devise_for :users
+  
+  resources :users, :only => [:index, :show]
 
   root :to => "pages#home"
 
