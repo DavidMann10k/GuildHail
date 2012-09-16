@@ -1,9 +1,15 @@
 <% title "Alliance" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @alliance.name %>
-</p>
+<%= content_tag :h1, @alliance.name %>
+<%= content_tag :h2, "Founded On" %>
+<%= content_tag :p, "#{@alliance.created_at.strftime('%B %d, %Y')}" %>
+
+<%= content_tag :h2, "Members" %>
+<ul>
+	<% @members.each do |m| %>
+		<li><%= link_to m.name, user_path(m) %></li>
+	<% end %>
+</ul>
 
 <p>
   <%= link_to "Edit", edit_alliance_path(@alliance) %> |

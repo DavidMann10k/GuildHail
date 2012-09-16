@@ -14,7 +14,7 @@
 <h2>Owner of</h2>
 	<ul>
 	<% @user.owned_alliances.each do |oa| %>
-		<li><b><%= link_to a.name, alliance_path %></b><%= " since #{a.created_at.strftime('%B %d, %Y')}" %></li>
+		<li><b><%= link_to oa.name, alliance_path %></b><%= " since #{oa.created_at.strftime('%B %d, %Y')}" %></li>
 	<%end%>
 	</ul>
 <% end %>

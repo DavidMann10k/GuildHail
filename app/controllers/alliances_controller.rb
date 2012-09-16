@@ -17,6 +17,7 @@ class AlliancesController < ApplicationController
   end
 
   def show
+    @members = @alliance.users
   end
 
   def edit
