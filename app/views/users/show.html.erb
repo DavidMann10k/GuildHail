@@ -1,10 +1,22 @@
-<h1><%= @user.name %></h1><%= link_to "Edit Profile", edit_user_registration_path if @user == current_user %>
-<h2>Memeber Since</h2>
-<%= "#{@user.created_at.strftime('%B %d, %Y')}" %>
+<h1><%= @user.name %></h1>
+<%= content_tag :h2, "GuildHail user since:" %>
+<%= content_tag :p, "#{@user.created_at.strftime('%B %d, %Y')}" %>
 <% unless @user.alliances.empty? %>
-	<h2>Member Of</h2>
+	<h2>Member of</h2>
+	<ul>
 	<% @user.alliances.each do |a| %>
-		<%= a.name %> since <%= a.membership.created_at.strftime('%B %d, %Y') %>
+		<li><b><%= link_to a.name, alliance_path %></b><%= " since #{a.created_at.strftime('%B %d, %Y')}" %></li>
 		
 	<% end %>
+	</ul>
 <% end %>
+<% unless @user.owned_alliances.empty? %>
+<h2>Owner of</h2>
+	<ul>
+	<% @user.owned_alliances.each do |oa| %>
+		<li><b><%= link_to a.name, alliance_path %></b><%= " since #{a.created_at.strftime('%B %d, %Y')}" %></li>
+	<%end%>
+	</ul>
+<% end %>
+<br/>
+<%= link_to "Edit Profile", edit_user_registration_path if @user == current_user %>

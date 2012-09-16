@@ -7,6 +7,8 @@ class AlliancesController < ApplicationController
   end
 
   def create
+    @alliance.owner = current_user
+    @alliance.memberships.build(:user => current_user)
     if @alliance.save
       redirect_to @alliance, :notice => "Successfully created alliance."
     else

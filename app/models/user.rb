@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :alliances, :through => :memberships
   
+  has_many :owned_alliances, :class_name => "Alliance"
+  
   has_many :assignments
   has_many :roles, :through => :assignments
 

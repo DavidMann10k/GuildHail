@@ -3,16 +3,20 @@ class Ability
 
   def initialize(user)
        
-    user ||= User.new
+    user ||= User.new  
+    #guest
+    can :read, :all
     
-    if user.role? :admin
-      can :manage, :all
-    else
-       can :read, :all
+    #authenticated
+    unless user.new_record?
+      can :create, Alliance
+      can :manage, Alliance 
     end
     
+    #admin
+    can :manage, :all if user.role? :admin
     
-    #
+
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are
     # :read, :create, :update and :destroy.
