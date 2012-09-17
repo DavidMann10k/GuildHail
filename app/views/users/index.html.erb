@@ -1,3 +1,4 @@
+<%= will_paginate @users %>
 <ul>
 <% @users.each do |u| %>
 	<li><%= link_to u.name, user_path(u) %></li>

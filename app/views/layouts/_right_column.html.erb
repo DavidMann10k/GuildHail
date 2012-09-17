@@ -1,2 +1,2 @@
-<p>signed in as: </p>
-<%= content_tag :h2, current_user.name  if signed_in? %>
+<%= content_tag :p, "signed in as:" if signed_in? %>
+<%= content_tag :h2, current_user.name if signed_in? %>

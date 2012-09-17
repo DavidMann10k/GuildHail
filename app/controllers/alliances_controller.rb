@@ -1,6 +1,7 @@
 class AlliancesController < ApplicationController
   load_and_authorize_resource
   def index
+    @alliances = @alliances.paginate(:page => params[:page]).order('name ASC')
   end
 
   def new
@@ -17,7 +18,7 @@ class AlliancesController < ApplicationController
   end
 
   def show
-    @members = @alliance.users
+    @users = @alliance.users.paginate(:page => params[:page]).order('name ASC')
   end
 
   def edit

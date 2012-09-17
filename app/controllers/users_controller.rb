@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   def index
-    @users = @users.paginate(:user => params[:page], :per_page => 30)
+    @users = User.paginate(:page => params[:page]).order('name ASC')
   end
-
+  
   def show
   end
 end
