@@ -12,7 +12,7 @@
 </ul>
 
 <p>
-  <%= link_to "Edit", edit_alliance_path(@alliance) %> |
-  <%= link_to "Destroy", @alliance, :confirm => 'Are you sure?', :method => :delete %> |
+  <% if can? :update, Alliance %><%= link_to "Edit", edit_alliance_path(@alliance) %> |<% end %>
+  <% if can? :destroy, Alliance %><%= link_to "Destroy", @alliance, :confirm => 'Are you sure?', :method => :delete %> |<% end %>
   <%= link_to "View All", alliances_path %>
 </p>

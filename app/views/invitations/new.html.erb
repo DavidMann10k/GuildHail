@@ -1,0 +1,25 @@
+<% title "New Invitation" %>
+
+<%= form_for @invitation do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :string %><br />
+    <%= f.text_field :string %>
+  </p>
+  <p>
+    <%= f.label :integer %><br />
+    <%= f.text_field :integer %>
+  </p>
+  <p>
+    <%= f.label :integer %><br />
+    <%= f.text_field :integer %>
+  </p>
+  <p>
+    <%= f.label :integer %><br />
+    <%= f.text_field :integer %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+
+<p><%= link_to "Back to List", invitations_path %></p>

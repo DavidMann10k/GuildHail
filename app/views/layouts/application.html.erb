@@ -14,11 +14,13 @@
 	        <div class="colleft">
 	            <div class="col1wrap">
 	                <div class="col1">
+						<!-- Column 1 start -->
 					  <% flash.each do |name, msg| %>
 					    <%= content_tag :div, msg, :id => "flash_#{name}" %>
 					  <% end %>
-						<!-- Column 1 start -->
-      						<%= yield %>						
+						<div class="content">
+      						<%= yield %>
+						</div>				
 						<!-- Column 1 end -->
 	                </div>
 	            </div>
@@ -29,7 +31,7 @@
 	            </div>
 	            <div class="col3">
 					<!-- Column 3 start -->
-					<%= render 'layouts/right_column' %>
+					<%= yield :context_menu %>
 					<!-- Column 3 end -->
 				</div>
 			</div>

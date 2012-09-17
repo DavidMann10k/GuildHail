@@ -1,0 +1,23 @@
+<% title "Invitation" %>
+
+<p>
+  <strong>String:</strong>
+  <%= @invitation.string %>
+</p>
+<p>
+  <strong>Integer:</strong>
+  <%= @invitation.integer %>
+</p>
+<p>
+  <strong>Integer:</strong>
+  <%= @invitation.integer %>
+</p>
+<p>
+  <strong>Integer:</strong>
+  <%= @invitation.integer %>
+</p>
+
+<p>
+  <%= link_to "Destroy", @invitation, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", invitations_path %>
+</p>

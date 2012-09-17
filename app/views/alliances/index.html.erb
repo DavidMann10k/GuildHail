@@ -3,15 +3,16 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Founder</th>
+    <th>Created</th>
   </tr>
   <% for alliance in @alliances %>
     <tr>
       <td><%= link_to "#{alliance.name}", alliance_path(alliance) %></td>
-      <td><%= link_to "Show", alliance %></td>
-      <td><%= link_to "Edit", edit_alliance_path(alliance) %></td>
-      <td><%= link_to "Destroy", alliance, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= alliance.owner.name %></td>
+      <td><%= alliance.created_at.strftime('%B %d, %Y') %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Alliance", new_alliance_path %></p>
+<p><%= link_to "New Alliance", new_alliance_path if can? :create, Alliance %></p>

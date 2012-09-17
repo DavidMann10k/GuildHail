@@ -20,3 +20,11 @@
 <% end %>
 <br/>
 <%= link_to "Edit Profile", edit_user_registration_path if @user == current_user %>
+
+<% content_for :context_menu do %>
+	<% if signed_in? %>
+		<% current_user.owned_alliances.each do |a| %>
+			<%= link_to "Add #{@user.name} to #{a.name}"%>
+		<% end %>
+	<% end %>
+<% end %>
