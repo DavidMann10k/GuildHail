@@ -1,0 +1,20 @@
+<%= form_for @invitation do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :message %><br />
+    <%= f.text_field :message %>
+  </p>
+  <p>
+    <%= f.label :sender_user_id %><br />
+    <%= f.number_field :sender_user_id %>
+  </p>
+  <p>
+    <%= f.label :recipient_user_id %><br />
+    <%= f.number_field :recipient_user_id %>
+  </p>
+  <p>
+    <%= f.label :alliance_id %><br />
+    <%= f.number_field :alliance_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

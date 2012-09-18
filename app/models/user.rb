@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   
   has_many :assignments
   has_many :roles, :through => :assignments
+  
+  has_many :sent_invitations, :class_name => "Invitation"
+  has_many :recieved_invitations, :class_name => "Invitation"
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   user_regex = /^\w+$/
@@ -36,6 +39,10 @@ class User < ActiveRecord::Base
   ROLES = %w[admin mod banned]
   
   def role?(role)
-    roles.include? role.to_s
+    roles.all.map(&:name).include? role.to_s
+  end
+  
+  def owns?(alliance)
+    user == alliance.owner
   end
 end

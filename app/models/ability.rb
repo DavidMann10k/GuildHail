@@ -6,13 +6,21 @@ class Ability
     user ||= User.new  
     #guest
     can :read, Alliance
-    can :read, User    
+    can :read, User
     
     #authenticated
     unless user.new_record?
       can :create, Alliance
       can :update, Alliance, :user_id => user.id
       can :destroy, Alliance, :user_id => user.id
+      
+      can :create, Invitation
+      
+      can :read, Membership, :user_id => user.id
+      can :create, Membership
+      can :destroy, Membership, :user_id => user.id
+      
+      can :create, Invitation
     end
     
     #admin

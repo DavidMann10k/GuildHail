@@ -6,6 +6,11 @@ class InvitationsControllerTest < ActionController::TestCase
     assert_template 'index'
   end
 
+  def test_show
+    get :show, :id => Invitation.first
+    assert_template 'show'
+  end
+
   def test_new
     get :new
     assert_template 'new'
@@ -23,9 +28,21 @@ class InvitationsControllerTest < ActionController::TestCase
     assert_redirected_to invitation_url(assigns(:invitation))
   end
 
-  def test_show
-    get :show, :id => Invitation.first
-    assert_template 'show'
+  def test_edit
+    get :edit, :id => Invitation.first
+    assert_template 'edit'
+  end
+
+  def test_update_invalid
+    Invitation.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => Invitation.first
+    assert_template 'edit'
+  end
+
+  def test_update_valid
+    Invitation.any_instance.stubs(:valid?).returns(true)
+    put :update, :id => Invitation.first
+    assert_redirected_to invitation_url(assigns(:invitation))
   end
 
   def test_destroy

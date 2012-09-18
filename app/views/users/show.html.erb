@@ -24,7 +24,7 @@
 <% content_for :context_menu do %>
 	<% if signed_in? %>
 		<% current_user.owned_alliances.each do |a| %>
-			<%= link_to "Add #{@user.name} to #{a.name}"%>
+			<%= link_to "Invite #{@user.name} to #{a.name}", { :controller => "invitations", :action => "new", :alliance_id => a.id } %>
 		<% end %>
 	<% end %>
 <% end %>

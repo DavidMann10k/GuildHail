@@ -1,22 +1,12 @@
 <% title "Invitations" %>
 
-<table>
-  <tr>
-    <th>String</th>
-    <th>Integer</th>
-    <th>Integer</th>
-    <th>Integer</th>
-  </tr>
-  <% for invitation in @invitations %>
-    <tr>
-      <td><%= invitation.string %></td>
-      <td><%= invitation.integer %></td>
-      <td><%= invitation.integer %></td>
-      <td><%= invitation.integer %></td>
-      <td><%= link_to "Show", invitation %></td>
-      <td><%= link_to "Destroy", invitation, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
-
-<p><%= link_to "New Invitation", new_invitation_path %></p>
+<%= content_tag :h2, "Invitations Sent"%>
+<% @invitations_sent.each do |is| %>
+	<%= is.sender.name %> => <%= is.recipient.name %>, <br />
+	"<%= is.message %>"
+<% end %>
+<%= content_tag :h2, "Invitations Recieved"%>
+<% @invitations_recieved.each do |ir| %>
+	<%= ir.sender.name %> => <%= ir.recipient.name %>, <%= link_to "Accept", { :controller => "memberships", :action => "new", :invitation_id => ir.id } %><br />
+	"<%= ir.message %>"
+<% end %>

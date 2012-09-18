@@ -12,4 +12,8 @@ class Alliance < ActiveRecord::Base
                    :uniqueness => { :case_sensitive => false }
                    
   validates :user_id, :presence => true
+  
+  def owned_by?(user)
+    user == owner
+  end
 end

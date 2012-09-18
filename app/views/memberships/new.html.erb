@@ -1,0 +1,9 @@
+<%= @invitation.recipient.name %>,<br />
+<%= simple_format @invitation.message %><br />
+-<%= @invitation.sender.name %>
+
+<%= form_for @membership do |f| %>
+  <%= f.error_messages %>
+    <%= hidden_field_tag :invitation_id, params[:invitation_id] %>
+  <p><%= f.submit %></p>
+<% end %>

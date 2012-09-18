@@ -1,4 +1,5 @@
 GuildHail::Application.routes.draw do
+  resources :memberships, :only => [:index, :new, :create, :show, :destroy]
   
   resources :invitations
 

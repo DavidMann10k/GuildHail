@@ -1,11 +1,11 @@
 one:
-  string: 
-  integer: 
-  integer: 
-  integer: 
+  message: MyString
+  sender_user_id: 1
+  recipient_user_id: 1
+  alliance_id: 1
 
 two:
-  string: 
-  integer: 
-  integer: 
-  integer: 
+  message: MyString
+  sender_user_id: 1
+  recipient_user_id: 1
+  alliance_id: 1

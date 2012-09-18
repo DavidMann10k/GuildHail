@@ -2,22 +2,10 @@
 
 <%= form_for @invitation do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :string %><br />
-    <%= f.text_field :string %>
-  </p>
-  <p>
-    <%= f.label :integer %><br />
-    <%= f.text_field :integer %>
-  </p>
-  <p>
-    <%= f.label :integer %><br />
-    <%= f.text_field :integer %>
-  </p>
-  <p>
-    <%= f.label :integer %><br />
-    <%= f.text_field :integer %>
-  </p>
+  	<%= f.label :message %>
+  	<%= f.text_field :message%>
+	<%= hidden_field_tag :user_id, params[:user_id] %>
+	<%= hidden_field_tag :alliance_id, params[:alliance_id] %>
   <p><%= f.submit %></p>
 <% end %>
 
