@@ -5,7 +5,9 @@
 		<%= render :partial => "invite", :locals => { :i => is } %>
 	<% end %>
 <% end %>
-<%= content_tag :h2, "Invitations Recieved"%>
-<% @invitations_recieved.each do |ir| %>
-	<%= render :partial => "invite", :locals => { :i => ir } %>
+<% unless @invitations_recieved.empty? %>
+	<%= content_tag :h2, "Invitations Recieved"%>
+	<% @invitations_recieved.each do |ir| %>
+		<%= render :partial => "invite", :locals => { :i => ir } %>
+		<% end %>
 <% end %>
