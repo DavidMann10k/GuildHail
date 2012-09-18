@@ -1,12 +1,11 @@
 <% title "Invitations" %>
-
-<%= content_tag :h2, "Invitations Sent"%>
-<% @invitations_sent.each do |is| %>
-	<%= is.sender.name %> => <%= is.recipient.name %>, <br />
-	"<%= is.message %>"
+<% unless @invitations_sent.empty? %>
+	<%= content_tag :h2, "Invitations Sent"%>
+ 	<% @invitations_sent.each do |is| %>
+		<%= render :partial => "invite", :locals => { :i => is } %>
+	<% end %>
 <% end %>
 <%= content_tag :h2, "Invitations Recieved"%>
 <% @invitations_recieved.each do |ir| %>
-	<%= ir.sender.name %> => <%= ir.recipient.name %>, <%= link_to "Accept", { :controller => "memberships", :action => "new", :invitation_id => ir.id } %><br />
-	"<%= ir.message %>"
+	<%= render :partial => "invite", :locals => { :i => ir } %>
 <% end %>

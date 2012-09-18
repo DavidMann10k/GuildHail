@@ -1,4 +1,4 @@
 <h1>Memberships</h1>
 <% @memberships.each do |m| %>
-	<%= link_to m.user.name, user_path(m.user) %> => <%= link_to m.alliance.name, alliance_path(m.alliance) %><br />
+	<%= link_to m.user.name, user_path(m.user) if current_user.role? :admin %><h3><%= link_to m.alliance.name, alliance_path(m.alliance) %></h3><%= content_tag :p, "Since #{m.created_at}"%>
 <% end %>

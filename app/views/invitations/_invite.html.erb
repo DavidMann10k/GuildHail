@@ -1,0 +1,10 @@
+<div class="invitation">
+	<%= content_tag :h3, "#{i.recipient.name}," %>
+	"<%= i.message %>"
+	<%= content_tag :h3, "-#{i.sender.name}" %>
+	<% if i.recipient == current_user %>
+		<%= link_to "Accept", { :controller => :memberships, :action => :create, :invitation_id => i.id }, :method => :post %> | 
+		<%= link_to "Decline", i, :confirm => 'Are you sure?', :method => :delete %>
+		<%= link_to "Cancel", i, :confirm => "Cancel invitation for #{i.recipient}, to #{i.alliance}?"%>
+	<% end %>
+</div>

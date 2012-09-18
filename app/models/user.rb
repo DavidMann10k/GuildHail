@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
   end
   
   def owns?(alliance)
-    user == alliance.owner
+    self == alliance.owner
+  end
+  
+  def member_of?(alliance)
+    alliances.all.include? alliance
   end
 end

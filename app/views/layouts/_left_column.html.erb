@@ -2,4 +2,5 @@
 <% if can? :read, Alliance %><li><%= link_to "Alliances", alliances_path %></li><% end %>
 <% if can? :read, User %><li><%= link_to "Users", users_path %></li><% end %>
 <% if can? :read, Invitation %><li><%= link_to "Invitations", invitations_path %></li><% end %>
+<% if can? :read, Membership %><li><%= link_to "Memeberships", memberships_path %></li><% end %>
 </li>

@@ -14,13 +14,12 @@ class Ability
       can :update, Alliance, :user_id => user.id
       can :destroy, Alliance, :user_id => user.id
       
-      can :create, Invitation
+      can :manage, Invitation
       
       can :read, Membership, :user_id => user.id
       can :create, Membership
       can :destroy, Membership, :user_id => user.id
       
-      can :create, Invitation
     end
     
     #admin

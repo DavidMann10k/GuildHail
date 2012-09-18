@@ -5,7 +5,7 @@
 	<h2>Member of</h2>
 	<ul>
 	<% @user.alliances.each do |a| %>
-		<li><b><%= link_to a.name, alliance_path %></b><%= " since #{a.created_at.strftime('%B %d, %Y')}" %></li>
+		<li><b><%= link_to a.name, alliance_path(a) %></b><%= " since #{a.created_at.strftime('%B %d, %Y')}" %></li>
 		
 	<% end %>
 	</ul>
@@ -14,7 +14,7 @@
 <h2>Owner of</h2>
 	<ul>
 	<% @user.owned_alliances.each do |oa| %>
-		<li><b><%= link_to oa.name, alliance_path %></b><%= " since #{oa.created_at.strftime('%B %d, %Y')}" %></li>
+		<li><b><%= link_to oa.name, alliance_path(oa) %></b><%= " since #{oa.created_at.strftime('%B %d, %Y')}" %></li>
 	<%end%>
 	</ul>
 <% end %>
@@ -24,7 +24,7 @@
 <% content_for :context_menu do %>
 	<% if signed_in? %>
 		<% current_user.owned_alliances.each do |a| %>
-			<%= link_to "Invite #{@user.name} to #{a.name}", { :controller => "invitations", :action => "new", :alliance_id => a.id } %>
+			<%= link_to "Invite #{@user.name} to #{a.name}", { :controller => "invitations", :action => "new", :alliance_id => a.id, :user_id => @user.id } unless @user.member_of?(a) %>
 		<% end %>
 	<% end %>
 <% end %>
