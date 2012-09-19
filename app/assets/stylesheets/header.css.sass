@@ -1,20 +1,43 @@
 @import "mixins"
 
 nav
-  float: right
+  width: 50%
+  margin: 0px auto
+  height: 100%
+  padding: 0px
+  text-align: center
+  vertical-align: middle
   a
-    @include cool_link
-
+    display: inline-block
+    text-align: center
+    background: $gre_2
+    width: 100px
+    height: 100px
+    padding: 14px 0px
+    @include round
+    font-size: 1.5em
+    font-family: 'Eagle Lake', sans-serif
+    
 header
   background-color: $gre_4
   clear: both
   float: left
   width: 100%
-  border-bottom: 1px solid #000
-  a
-    float: right
-    margin: 5px
-  h1 a
-    margin: 5px
-    float: left
-    @include title_link
+  height: 40px
+  border-bottom: 7px solid $red_2
+  padding-top: 2px
+  
+a.title
+  font-family: 'Eagle Lake', sans-serif
+  font-size: 2.5em
+  color: $title
+  position: absolute
+  top: 5px
+  left: 5px
+  @include round
+  @include title_link
+  background: $gre_2
+  padding: 12px
+  &:hover
+    color: $link
+  
