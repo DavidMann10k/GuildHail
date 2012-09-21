@@ -19,7 +19,7 @@
 	</ul>
 <% end %>
 <br/>
-<%= link_to "Edit Profile", edit_user_registration_path if @user == current_user %>
+<p><%= link_to "Edit Profile", edit_user_registration_path if @user == current_user %></p>
 
 <% content_for :context_menu do %>
 	<% if signed_in? %>

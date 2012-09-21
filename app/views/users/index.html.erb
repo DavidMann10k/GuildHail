@@ -1,6 +1,11 @@
 <%= will_paginate @users %>
-<ul>
-<% @users.each do |u| %>
-	<li><%= link_to u.name, user_path(u) %></li>
-<% end %>
-</ul>
+<table>
+	<th>Name</th>
+	<th>User Since</th>
+	<% @users.each do |u| %>
+	<tr>
+		<td><%= link_to u.name, user_path(u) %></td>
+		<td><%= "#{u.created_at.strftime('%B %d, %Y')}" %></td>
+	</tr>
+	<% end %>
+</table>
