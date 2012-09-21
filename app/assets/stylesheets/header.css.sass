@@ -13,31 +13,38 @@ nav
     background: $gre_2
     width: 100px
     height: 100px
-    padding: 14px 0px
+    padding: 10px 0px
     @include round
-    font-size: 1.5em
-    font-family: 'Eagle Lake', sans-serif
+    font-size: 2em
+    font-family: 'Almendra', serif
+    font-weight: bold
     
 header
-  background-color: $gre_4
+  background-color: $Gnarly_tangerine
   clear: both
   float: left
   width: 100%
   height: 40px
-  border-bottom: 7px solid $red_2
+  border-bottom: 7px solid $Gnarly_red
   padding-top: 2px
   
 a.title
-  font-family: 'Eagle Lake', sans-serif
-  font-size: 2.5em
-  color: $title
+  font-family: 'Almendra', serif
+  font-size: 3em
   position: absolute
-  top: 5px
-  left: 5px
+  top: 6px
+  left: 15px
   @include round
   @include title_link
-  background: $gre_2
-  padding: 12px
+  background: $Gnarly_red
+  padding: 3px 12px 15px 12px
+  &:link
+    color: $title
+  &:visited
+    color: $title
   &:hover
-    color: $link
+    color: $gre_3
+  &:active
+    color: $gre_3
+  font-weight: bold
   

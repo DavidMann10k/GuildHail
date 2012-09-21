@@ -1,5 +1,10 @@
 @import "mixins"
 
+.jape
+  font-family: 'Simonetta', cursive
+  font-family: 'Almendra', serif
+  font-family: 'Jacques Francois Shadow', cursive
+
 .cool_link
   @include cool_link
 
@@ -8,21 +13,29 @@ body
   color: $text
   font-size: .8em
 
-
+p
+  margin: 10px
+  line-height: 130%
 h1
-  font-family: 'Eagle Lake', sans-serif
+  font-family: 'Simonetta', cursive
   font-size: 2.5em
   color: $title
-  margin: 15px 0px
+  margin: 0px 0px 15px 0px
+  padding: 5px
+  background: $Gnarly_red
+  top: 0px
+  text-align: center
+  letter-spacing: 10px
+  font-weight: bold
 
 h2
-  font-family: 'Jim Nightshade', sans-serif
+  font-family: 'Almendra', serif
   color: $title
   font-size: 1.9em
   margin: 15px 0px
 
 h3
-  font-family: 'Eagle Lake', sans-serif
+  font-family: 'Almendra', serif
   color: $title
   font-size: 1.3em
   margin: 15px 0px
@@ -42,9 +55,10 @@ h5
 h6
   font-family: 'Bitter', serif
   color: $text
-  font-size: 1em
-  font-style: italic
-  margin: 15px 0px
+  font-size: 1.2em
+  margin: 10px
+  line-height: 130%
+  text-align: center
 
 a
   color: $link
