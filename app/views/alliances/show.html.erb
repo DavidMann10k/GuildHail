@@ -1,18 +1,22 @@
-<% title "Alliance" %>
-
-<%= content_tag :h1, @alliance.name %>
 <%= content_tag :h2, "Founded On" %>
 <%= content_tag :p, "#{@alliance.created_at.strftime('%B %d, %Y')}" %>
 
 <%= content_tag :h2, "Members" %>
-<ul>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Since</th>
+	</tr>
+	<tr>
 	<% @users.each do |u| %>
-		<li><%= link_to u.name, user_path(u) %></li>
+		<td><%= link_to u.name, user_path(u) %></td>
+		<td><%= u.memberships.find_by_alliance_id(@alliance.id).created_at.strftime('%B %d, %Y')%></td>
 	<% end %>
-</ul>
+	</tr>
+</table>
 
 <p>
-  <% if can? :update, Alliance %><%= link_to "Edit", edit_alliance_path(@alliance) %> |<% end %>
-  <% if can? :destroy, Alliance %><%= link_to "Destroy", @alliance, :confirm => 'Are you sure?', :method => :delete %> |<% end %>
+  <% if can? :update, @alliance %><%= link_to "Edit", edit_alliance_path(@alliance) %> |<% end %>
+  <% if can? :destroy, @alliance %><%= link_to "Destroy", @alliance, :confirm => 'Are you sure?', :method => :delete %> |<% end %>
   <%= link_to "View All", alliances_path %>
 </p>

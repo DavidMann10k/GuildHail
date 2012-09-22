@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_timezone
   
+  helper :layout
+  
   def set_timezone
     Time.zone = time_zone
     

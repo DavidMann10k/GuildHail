@@ -2,10 +2,11 @@ class MembershipsController < ApplicationController
   load_and_authorize_resource
   def index
     @memberships = current_user.memberships
+    @title = "Memberships"
   end
   
   def show
-    
+    @title = "#{@membership.alliance.name} Membership"
   end
 
   def create

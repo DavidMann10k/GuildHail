@@ -1,10 +1,12 @@
 class AlliancesController < ApplicationController
   load_and_authorize_resource
   def index
+    @title = "Alliances"
     @alliances = @alliances.paginate(:page => params[:page]).order('name ASC')
   end
 
   def new
+    @title = "New Alliance"
   end
 
   def create
@@ -18,10 +20,12 @@ class AlliancesController < ApplicationController
   end
 
   def show
+    @title = @alliance.name
     @users = @alliance.users.paginate(:page => params[:page]).order('name ASC')
   end
 
   def edit
+    @title = "Edit #{@alliance.name}"
   end
 
   def update

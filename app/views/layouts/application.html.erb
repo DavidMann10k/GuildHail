@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>GuildHail | <%= @title %></title>
     <%= render 'layouts/stylesheets' %>
     <%= csrf_meta_tag %>
   </head>
@@ -19,6 +19,7 @@
 					    <%= content_tag :div, msg, :id => "flash_#{name}" %>
 					  <% end %>
 						<div class="content">
+							<%= content_tag :h1, @title %>
       						<%= yield %>
 						</div>				
 						<!-- Column 1 end -->
@@ -31,7 +32,9 @@
 	            </div>
 	            <div class="col3">
 					<!-- Column 3 start -->
-					<%= yield :context_menu %>
+					<div class="context_menu">
+						<%= yield :context_menu %>
+					</div>
 					<!-- Column 3 end -->
 				</div>
 			</div>

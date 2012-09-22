@@ -1,4 +1,4 @@
-<h1>Memberships</h1>
+<%= content_tag :h6, "No Memberships Found" if @memberships.empty? %>
 <% @memberships.each do |m| %>
 	<h2><%= link_to m.alliance.name, alliance_path(m.alliance) %></h2><%= content_tag :p, "Since #{m.created_at}"%>
 <% end %>

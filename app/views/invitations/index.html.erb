@@ -1,4 +1,4 @@
-<% title "Invitations" %>
+<%= content_tag :h6, "No Invitations Found" if @invitations_sent.empty? and @invitations_recieved.empty? %>
 <% unless @invitations_sent.empty? %>
 	<%= content_tag :h2, "Invitations Sent"%>
  	<% @invitations_sent.each do |is| %>
