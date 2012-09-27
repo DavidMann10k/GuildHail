@@ -1,14 +1,19 @@
 GuildHail::Application.routes.draw do
-  resources :memberships, :only => [:index, :new, :create, :show, :destroy]
-  
-  resources :invitations
-
-  resources :alliances
 
   devise_for :users
   
-  resources :users, :only => [:index, :show]
+  resources :memberships, :only => [:index, :new, :create, :show, :destroy]
+  resources :invitations
+  
+  resources :alliances do
+    resources :messages
+  end
 
+  resources :users, :only => [:index, :show] do
+    resources :messages
+  end
+
+  
   root :to => "pages#home"
 
   get "pages/about"

@@ -20,3 +20,9 @@
   <% if can? :destroy, @alliance %><%= link_to "Destroy", @alliance, :confirm => 'Are you sure?', :method => :delete %> |<% end %>
   <%= link_to "View All", alliances_path %>
 </p>
+
+<% content_for :context_menu do %>
+	<% if signed_in? && current_user.member_of?(@alliance) %>
+		<%= link_to "View Feed", alliance_messages_path(@alliance) %>
+	<% end %>
+<% end %>

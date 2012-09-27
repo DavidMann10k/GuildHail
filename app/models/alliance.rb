@@ -4,6 +4,8 @@ class Alliance < ActiveRecord::Base
   has_many :users, :through => :memberships
   belongs_to :owner, :class_name => "User", :foreign_key => :user_id
   
+  has_many :messages, :as => :messagable
+  
   alliance_regex = /^\w+$/
   
   validates :name, :presence => true,

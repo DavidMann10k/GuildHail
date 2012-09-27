@@ -1,5 +1,6 @@
 class CreateInvitations < ActiveRecord::Migration
   def self.up
+    drop_table :invitations
     create_table :invitations do |t|
       t.string :message
       t.integer :sender_user_id

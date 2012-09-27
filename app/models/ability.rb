@@ -20,10 +20,13 @@ class Ability
       can :create, Membership
       can :destroy, Membership, :user_id => user.id
       
+      can :read, Message
+      can :create, Message
+      can :destroy, Message
     end
     
     #admin
-    can :manage, :all if user.role? :admin
+    #can :manage, :all if user.role? :admin
     
 
     # The first argument to `can` is the action you are giving the user permission to do.

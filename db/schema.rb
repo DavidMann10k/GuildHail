@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917013133) do
+ActiveRecord::Schema.define(:version => 20120922011130) do
 
   create_table "alliances", :force => true do |t|
     t.string   "name"
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(:version => 20120917013133) do
 
   create_table "invitations", :force => true do |t|
     t.string   "message"
-    t.integer  "alliance_id"
     t.integer  "sender_user_id"
     t.integer  "recipient_user_id"
+    t.integer  "alliance_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(:version => 20120917013133) do
 
   add_index "memberships", ["alliance_id"], :name => "index_memberships_on_alliance_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "messagable_id"
+    t.string   "messagable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
