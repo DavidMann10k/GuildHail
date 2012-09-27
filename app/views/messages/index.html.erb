@@ -11,7 +11,7 @@
       <td><%= message.content %></td>
       <td><%= message.messagable_id %></td>
       <td><%= message.messagable_type %></td>
-      <td><%= link_to "Show", message %></td>
+      <td><%= link_to "Show", polymorphic_url(@messagable, message) %></td>
       <td><%= link_to "Edit", edit_message_path(message) %></td>
       <td><%= link_to "Destroy", message, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>

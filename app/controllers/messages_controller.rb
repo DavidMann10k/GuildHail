@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
     @message = @messagable.messages.build(params[:message])
     @message.user = current_user
     if @message.save
-      redirect_to :id => nil
+      redirect_to @messagable
     else
       render :action => 'new'
     end
