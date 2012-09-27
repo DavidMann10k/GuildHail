@@ -1,0 +1,20 @@
+<% title "Message" %>
+
+<p>
+  <strong>Content:</strong>
+  <%= @message.content %>
+</p>
+<p>
+  <strong>Messagable:</strong>
+  <%= @message.messagable_id %>
+</p>
+<p>
+  <strong>Messagable Type:</strong>
+  <%= @message.messagable_type %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_message_path(@message) %> |
+  <%= link_to "Destroy", @message, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", messages_path %>
+</p>

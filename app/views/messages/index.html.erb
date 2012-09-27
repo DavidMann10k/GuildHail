@@ -1,0 +1,25 @@
+<% title "Messages" %>
+
+<table>
+  <tr>
+    <th>Content</th>
+    <th>Messagable</th>
+    <th>Messagable Type</th>
+  </tr>
+  <% for message in @messages %>
+    <tr>
+      <td><%= message.content %></td>
+      <td><%= message.messagable_id %></td>
+      <td><%= message.messagable_type %></td>
+      <td><%= link_to "Show", message %></td>
+      <td><%= link_to "Edit", edit_message_path(message) %></td>
+      <td><%= link_to "Destroy", message, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% content_for :context_menu do %>
+	<% if signed_in? && current_user.member_of?(@alliance) %>
+		<%= link_to "New Message", new_alliance_message_path %>
+	<% end %>
+<% end %>

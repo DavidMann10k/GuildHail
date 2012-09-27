@@ -1,0 +1,9 @@
+one:
+  content: MyText
+  messagable_id: 1
+  messagable_type: MyString
+
+two:
+  content: MyText
+  messagable_id: 1
+  messagable_type: MyString
