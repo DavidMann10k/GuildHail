@@ -1,10 +1,11 @@
 class MessagesController < ApplicationController
-  load_and_authorize_resource :user
-  load_and_authorize_resource :alliance
-  load_and_authorize_resource :message, :through => [ :user, :alliance ]
+  authorize_resource :user
+  authorize_resource :alliance
+  authorize_resource :message, :through => [ :user, :alliance ]
   before_filter :load_messagable
   def index
-    redirect_to root_path, :notice => 'Access to this action restricted!' unless @messagable == current_user || current_user.member_of?(@messagable)
+    @messages = []
+    @unauthorized = @messagable != current_user || !current_user.member_of?(@messagable)
     @messages = @messagable.messages if @messagable == current_user
     @messages = @messagable.messages if current_user.member_of?(@messagable)
     @title = "Messages for #{@messagable.name}"
@@ -23,7 +24,7 @@ class MessagesController < ApplicationController
     @message = @messagable.messages.build(params[:message])
     @message.user = current_user
     if @message.save
-      redirect_to @messagable
+      redirect_to polymorphic_path([@messagable, :messages])
     else
       render :action => 'new'
     end
@@ -45,7 +46,7 @@ class MessagesController < ApplicationController
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
-    redirect_to messages_url, :notice => "Successfully destroyed message."
+    redirect_to :back
   end
   
   def load_messagable

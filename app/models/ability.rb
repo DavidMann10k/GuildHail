@@ -20,7 +20,7 @@ class Ability
       can :create, Membership
       can :destroy, Membership, :user_id => user.id
       
-      can :read, Message
+      can :read, [ Message ]
       can :create, Message
       can :destroy, Message
     end

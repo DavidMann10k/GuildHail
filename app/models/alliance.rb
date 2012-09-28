@@ -18,4 +18,8 @@ class Alliance < ActiveRecord::Base
   def owned_by?(user)
     user == owner
   end
+  
+  def has_member?(user)
+    users.includes?(user)
+  end
 end

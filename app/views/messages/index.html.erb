@@ -1,22 +1,14 @@
 <% title "Messages" %>
-
-<table>
-  <tr>
-    <th>Content</th>
-    <th>Messagable</th>
-    <th>Messagable Type</th>
-  </tr>
-  <% for message in @messages %>
-    <tr>
-      <td><%= message.content %></td>
-      <td><%= message.messagable_id %></td>
-      <td><%= message.messagable_type %></td>
-      <td><%= link_to "Show", polymorphic_url(@messagable, message) %></td>
-      <td><%= link_to "Edit", edit_message_path(message) %></td>
-      <td><%= link_to "Destroy", message, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<%= content_tag :h6, "You are not permitted to view messages for this resource." if @unauthorized %>
+<% for m in @messages %>
+	<div id="message">
+		<%= content_tag :p, m.content %>
+		<%= content_tag :h2, link_to( m.user.name, users_path(m.user)) %>
+		<%= link_to "Show", polymorphic_path([@messagable]), :action => :index %>
+		<%= link_to "Edit", edit_polymorphic_path([@messagable, m]) %>
+		<%= link_to "Destroy", polymorphic_path([@messagable, m]), :confirm => 'Are you sure?', :method => :delete %>
+	</div>
+<% end %>
 
 <% content_for :context_menu do %>
 	<% if signed_in? && current_user.member_of?(@alliance) %>
