@@ -6,4 +6,8 @@ class Invitation < ActiveRecord::Base
   
   scope :sent_by, lambda { |user| where("sender_user_id = ?", user)}
   scope :recieved_by, lambda { |user| where("recipient_user_id = ?", user)}
+  
+  def self.exists_for?(user, alliance)
+    Invitation.recieved_by(user).map(&:alliance).include?(alliance)
+  end
 end

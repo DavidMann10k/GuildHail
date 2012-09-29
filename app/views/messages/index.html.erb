@@ -2,11 +2,11 @@
 <%= content_tag :h6, "You are not permitted to view messages for this resource." if @unauthorized %>
 <% for m in @messages %>
 	<div id="message">
+		<%= link_to "D", polymorphic_path([@messagable, m]), :confirm => 'Are you sure?', :method => :delete, :id => "message_link" %>
+		<%= link_to "E", edit_polymorphic_path([@messagable, m]), :id => "message_link" %>
+		<%= link_to "S", polymorphic_path([@messagable]), :action => :index, :id => "message_link" %>
 		<%= content_tag :p, m.content %>
 		<%= content_tag :h2, link_to( m.user.name, users_path(m.user)) %>
-		<%= link_to "Show", polymorphic_path([@messagable]), :action => :index %>
-		<%= link_to "Edit", edit_polymorphic_path([@messagable, m]) %>
-		<%= link_to "Destroy", polymorphic_path([@messagable, m]), :confirm => 'Are you sure?', :method => :delete %>
 	</div>
 <% end %>
 

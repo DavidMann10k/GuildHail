@@ -24,7 +24,7 @@
 	<% if signed_in? %>
 		<%= link_to "Send Message to #{@user.name}", new_user_message_path(@user) unless @user == current_user %>
 		<% current_user.owned_alliances.each do |a| %>
-			<%= link_to "Invite #{@user.name} to #{a.name}", { :controller => "invitations", :action => "new", :alliance_id => a.id, :user_id => @user.id } unless @user.member_of?(a)  %>
+			<%= link_to "Invite #{@user.name} to #{a.name}", { :controller => "invitations", :action => "new", :alliance_id => a.id, :user_id => @user.id } unless @user.member_of?(a) || Invitation.exists_for?(@user, a) %>
 		<% end %>
 		
 	<% end %>
