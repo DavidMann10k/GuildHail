@@ -6,11 +6,11 @@ GuildHail::Application.routes.draw do
   resources :invitations
   
   resources :alliances do
-    resources :messages
+    resources :messages, :only => [:index, :new, :create, :destroy]
   end
 
   resources :users, :only => [:index, :show] do
-    resources :messages
+    resources :messages, :only => [:index, :new, :create, :destroy]
   end
 
   
