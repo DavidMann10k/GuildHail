@@ -40,7 +40,7 @@
 			</div>
 		</div>
 	</div>
-	<%= render 'layouts/testing' %>
+	<%= render 'layouts/testing' if Rails.env.development? %>
 	<footer>
 		<%= render 'layouts/footer'%>
 	</footer>
