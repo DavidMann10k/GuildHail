@@ -10,4 +10,11 @@ class Invitation < ActiveRecord::Base
   def self.exists_for?(user, alliance)
     Invitation.recieved_by(user).map(&:alliance).include?(alliance)
   end
+  
+  def readable_by?(user)
+    return true if recipient == user
+    return true if sender == user
+    return true if user.owns?(alliance)
+    return false
+  end
 end

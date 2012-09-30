@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :sent_invitations, :class_name => "Invitation"
   has_many :recieved_invitations, :class_name => "Invitation"
   
-  has_many :messages, :as => :messagable
+  has_many :received_messages, :as => :messagable, :class_name => "Message"
   has_many :sent_messages, :class_name => "Message"
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -51,6 +51,10 @@ class User < ActiveRecord::Base
   
   def member_of?(alliance)
     alliances.all.include? alliance
+  end
+  
+  def owner?
+    !alliances.empty?
   end
  
 end

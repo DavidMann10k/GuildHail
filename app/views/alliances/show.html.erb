@@ -9,16 +9,16 @@
 	</tr>
 	<tr>
 	<% @users.each do |u| %>
-		<td><%= link_to u.name, user_path(u) %></td>
-		<td><%= u.memberships.find_by_alliance_id(@alliance.id).created_at.strftime('%B %d, %Y')%></td>
+		<tr>
+			<td><%= link_to u.name, user_path(u) %></td>
+			<td><%= u.memberships.find_by_alliance_id(@alliance.id).created_at.strftime('%B %d, %Y')%></td>
+		</tr>
 	<% end %>
-	</tr>
 </table>
 
 <p>
   <% if can? :update, @alliance %><%= link_to "Edit", edit_alliance_path(@alliance) %> |<% end %>
   <% if can? :destroy, @alliance %><%= link_to "Destroy", @alliance, :confirm => 'Are you sure?', :method => :delete %> |<% end %>
-  <%= link_to "View All", alliances_path %>
 </p>
 
 <% content_for :context_menu do %>

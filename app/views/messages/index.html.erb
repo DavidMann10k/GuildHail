@@ -1,23 +1,14 @@
 <% title "Messages" %>
-<%= content_tag :h6, "You are not permitted to view messages for this resource." unless @authorized %>
-<%= content_tag :h6, "No messages to display." if @messages.empty? %>
-<% for m in @messages %>
+
+<% for rm in @received_messages %>
 	<div id="message">
-		<%= link_to "X", polymorphic_path([@messagable, m]), :confirm => 'Are you sure?', :method => :delete, :id => "message_link" %>
-		<%= content_tag :p, m.content %>
-		<%= content_tag :h2, link_to( m.user.name, users_path(m.user)) %>
+		<%= content_tag :h5, "#{rm.recipient.name}," %><%= content_tag :p, rm.content %><%= content_tag :h5, rm.sender.name %>
 	</div>
 <% end %>
-<% if @messagable.class == User %>
-	<%= content_tag :h1, "Sent Messages" %>
-	<%= content_tag :h6, "No messages to display." if @sent_messages.empty? %>
-	<% for m in @sent_messages %>
-		<div id="message">
-			<%= link_to "X", polymorphic_path([@messagable, m]), :confirm => 'Are you sure?', :method => :delete, :id => "message_link" %>
-			<%= content_tag :p, m.content %>
-			<%= content_tag :h2, link_to( m.user.name, users_path(m.user)) %>
-		</div>
-	<% end %>
+<% for sm in @sent_messages %>
+	<div id="message">
+		<%= content_tag :h5, "#{sm.recipient.name}," %><%= content_tag :p, sm.content %><%= content_tag :h5, sm.sender.name %>
+	</div>
 <% end %>
 
 <% content_for :context_menu do %>

@@ -2,27 +2,37 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-       
-    user ||= User.new  
+      
+    #U = user
+    #AU = Authenticated User
+      
+    user ||= User.new
     #guest
     can :read, Alliance
     can :read, User
+    can :read, Membership
     
     #authenticated
     unless user.new_record?
+      
+      #Alliance
       can :create, Alliance
-      can :update, Alliance, :user_id => user.id
-      can :destroy, Alliance, :user_id => user.id
+      can [:update, :destroy], Alliance, :user_id => user.id
       
-      can :manage, Invitation
+      #Invitation
+      if user.owner?
+        can :create, Invitation
+      end
+      can [:read, :destroy], Invitation do |i|
+        i.readable_by?(user)
+      end
       
-      can :read, Membership, :user_id => user.id
+      #Membership
       can :create, Membership
       can :destroy, Membership, :user_id => user.id
       
-      can :read, [ Message ]
-      can :create, Message
-      can :destroy, Message
+      #Message
+      can [ :read, :create, :destroy ], Message
     end
     
     #admin

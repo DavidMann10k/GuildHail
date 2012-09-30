@@ -6,13 +6,21 @@ class MessagesController < ApplicationController
   
   def index
     @messages = []
-    @sent_messages = []
-    @alliance = @messagable if @messagable.class == Alliance
-    @user = @messagable if @messagable.class == User
-    @authorized = @messagable == current_user || current_user.member_of?(@messagable)
-    @messages = @messagable.messages if @messagable == current_user
-    @messages = @messagable.messages if current_user.member_of?(@messagable)
-    @sent_messages = @messagable.sent_messages if @messagable == current_user
+    if @messagable.class == User
+      @user = @messagable
+      if @user == current_user
+        @received_messages = @user.received_messages
+        @sent_messages = @user.sent_messages
+      else
+        @received_messages = @user.received_messages.from(current_user)
+      end
+    else 
+      if @messagable.class == Alliance
+        @alliance = @messagable
+        @messages = @alliance.messages if current_user.member_of? @alliance
+      end
+    end
+    
     @title = "Messages for #{@messagable.name}"
   end
 
