@@ -16,7 +16,15 @@
 		</div>
 	<% end %>
 <% end %>
-
+<% unless @mesages.blank? %>
+	<%= content_tag :h3, "Sent" %>
+	<% for m in @messages %>
+		<div id="message">
+			<%= content_tag :h5, "#{m.recipient.name}," %><%= content_tag :p, m.content %><%= content_tag :h5, m.sender.name %>
+		</div>
+	<% end %>
+<% end %>
+<%= content_tag :h6, "No messages found" if @received_messages.blank? && @sent_messages.blank? && @messages.blank? %>
 <% content_for :context_menu do %>
 	<% if signed_in? && current_user.member_of?(@alliance) %>
 		<%= link_to "New Message", new_alliance_message_path %>
