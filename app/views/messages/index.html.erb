@@ -1,14 +1,20 @@
-<% title "Messages" %>
-
-<% for rm in @received_messages %>
-	<div id="message">
-		<%= content_tag :h5, "#{rm.recipient.name}," %><%= content_tag :p, rm.content %><%= content_tag :h5, rm.sender.name %>
-	</div>
+<% @title = "Messages to #{@user.name}" unless @user.nil? %>
+<% @title = "#{@alliance.name} Feed" unless @alliance.nil? %>
+<% unless @received_messages.blank? %>
+	<%= content_tag :h3, "Recieved" %>
+	<% for rm in @received_messages %>
+		<div id="message">
+			<%= content_tag :h5, "#{rm.recipient.name}," %><%= content_tag :p, rm.content %><%= content_tag :h5, rm.sender.name %>
+		</div>
+	<% end %>
 <% end %>
-<% for sm in @sent_messages %>
-	<div id="message">
-		<%= content_tag :h5, "#{sm.recipient.name}," %><%= content_tag :p, sm.content %><%= content_tag :h5, sm.sender.name %>
-	</div>
+<% unless @sent_messages.blank? %>
+	<%= content_tag :h3, "Sent" %>
+	<% for sm in @sent_messages %>
+		<div id="message">
+			<%= content_tag :h5, "#{sm.recipient.name}," %><%= content_tag :p, sm.content %><%= content_tag :h5, sm.sender.name %>
+		</div>
+	<% end %>
 <% end %>
 
 <% content_for :context_menu do %>

@@ -1,0 +1,2 @@
+<%= content_tag :p, "Created on #{@membership.created_at.strftime('%B %d, %Y')}" %>
+<%= link_to "End Membership", @membership, :confirm => 'Are you sure?', :method => :delete %>

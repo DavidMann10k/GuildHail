@@ -4,15 +4,15 @@ class MessagesController < ApplicationController
   authorize_resource :message, :through => [ :user, :alliance ]
   before_filter :load_messagable
   
-  def index
-    @messages = []
-    if @messagable.class == User
+  def index    
+    if @messagable.class == User 
       @user = @messagable
       if @user == current_user
         @received_messages = @user.received_messages
         @sent_messages = @user.sent_messages
       else
-        @received_messages = @user.received_messages.from(current_user)
+        @sent_messages = Message.from_to(current_user, @user)
+        @received_messages = Message.from_to(@user, current_user)
       end
     else 
       if @messagable.class == Alliance
@@ -20,8 +20,6 @@ class MessagesController < ApplicationController
         @messages = @alliance.messages if current_user.member_of? @alliance
       end
     end
-    
-    @title = "Messages for #{@messagable.name}"
   end
 
   #def show
@@ -37,7 +35,7 @@ class MessagesController < ApplicationController
   #recipient is another user
   #recipient is an alliance he is a memeber of
   def create
-    @message = @messagable.messages.build(params[:message])
+    @message = @messagable.received_messages.build(params[:message])
     return redirect_to :back if @messagable.class == Alliance && !user.member_of?(@messagable)
     @message.user = current_user
     if @message.save
