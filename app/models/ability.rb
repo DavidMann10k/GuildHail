@@ -10,10 +10,10 @@ class Ability
     #guest
     can :read, Alliance
     can :read, User
-    can :read, Membership
     
     #authenticated
     unless user.new_record?
+      can :read, Membership
       
       #Alliance
       can :create, Alliance
