@@ -1,3 +1,0 @@
-module AlliancesHelper
-  
-end
