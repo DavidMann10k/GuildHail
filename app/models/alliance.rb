@@ -1,6 +1,6 @@
 class Alliance < ActiveRecord::Base
   attr_accessible :name
-  has_many :memberships
+  has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships
   belongs_to :owner, :class_name => "User", :foreign_key => :user_id
   
