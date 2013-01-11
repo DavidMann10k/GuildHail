@@ -8,4 +8,6 @@
 Role.create(name: 'Admin')
 Role.create(name: 'Mod')
 
-User.new(email: 'davidmann10k@gmail.com', password: 'please', password_confirmation: 'please', name: 'David', time_zone: 'Central Time (US & Canada)')
+u = User.new(email: 'admin@example.com', password: 'please', password_confirmation: 'please', name: 'David', time_zone: 'Central Time (US & Canada)')
+u.roles.build(name: "admin")
+u.save
